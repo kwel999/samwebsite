@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Do You Love Me?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <h1>DO YOU LOVE ME?</h1>
+    <div class="buttons">
+      <a href="/yes"><button class="yes-btn">YES</button></a>
+      <div class="no-wrapper">
+        <button class="no-btn" id="noBtn">NO</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const wrapper = document.querySelector('.no-wrapper');
+
+    function moveNoButton() {
+      const maxX = wrapper.offsetWidth - noBtn.offsetWidth;
+      const maxY = wrapper.offsetHeight - noBtn.offsetHeight;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${randX}px`;
+      noBtn.style.top = `${randY}px`;
+    }
+
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('touchstart', moveNoButton);
+  </script>
+</body>
+</html>
