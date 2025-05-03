@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Do You Love Me?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 5vw;
+      border-radius: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(20px);
+      max-width: 90vw;
+      position: relative;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #00ff88, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .yes-btn, .no-btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      z-index: 1;
+    }
+
+    .yes-btn {
+      background: #00ff88;
+      color: #0a0a0a;
+      box-shadow: 0 0 20px #00ff8866;
+    }
+
+    .yes-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .no-wrapper {
+      position: relative;
+      width: 120px;
+      height: 60px;
+    }
+
+    .no-btn {
+      background: #ff4d4d;
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    @media (max-width: 600px) {
+      .yes-btn, .no-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      .no-wrapper {
+        width: 100px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DO YOU LOVE ME?</h1>
+    <div class="buttons">
+      <button class="yes-btn" onclick="window.location.href='yes.html'">YES</button>
+      <div class="no-wrapper">
+        <button class="no-btn" id="noBtn">NO</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const wrapper = document.querySelector('.no-wrapper');
+
+    function moveNoButton() {
+      const maxX = wrapper.offsetWidth - noBtn.offsetWidth;
+      const maxY = wrapper.offsetHeight - noBtn.offsetHeight;
+      const randX = Math.random() * maxX;
+      const randY = Math.random() * maxY;
+      noBtn.style.left = `${randX}px`;
+      noBtn.style.top = `${randY}px`;
+    }
+
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('touchstart', moveNoButton);
+  </script>
+</body>
+</html>
